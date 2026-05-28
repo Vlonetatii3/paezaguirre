@@ -499,12 +499,6 @@ button { font: inherit; cursor: pointer; }
   padding: 6px 10px; background: var(--paper);
   border: 1px solid var(--line);
 }
-.person__media {
-  position: relative;
-  min-height: 100%;
-  border-right: 1px solid var(--line);
-  overflow: hidden;
-}
 .person__body { padding: 30px 32px; }
 .person__name {
   font-family: var(--serif); font-size: 28px; font-weight: 400;
@@ -642,6 +636,42 @@ button { font: inherit; cursor: pointer; }
 .info-row__value a:hover { border-bottom-color: var(--gold); }
 .info-row__sub { font-size: 13px; color: var(--muted); margin-top: 4px; font-family: var(--sans); }
 .info-row__btns { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+
+/* Contacto mobile */
+@media (max-width: 600px) {
+  /* Formulario: padding más compacto */
+  .form { padding: 26px 20px; }
+
+  /* Cada fila del formulario pasa a una columna */
+  .form__row { grid-template-columns: 1fr; gap: 0; }
+
+  /* Botón de envío debajo del texto legal, centrado */
+  .form__submit { flex-direction: column; align-items: stretch; gap: 14px; }
+  .form__submit .btn { width: 100%; justify-content: center; }
+  .form__legal { max-width: 100%; }
+
+  /* Info rows: etiqueta encima del valor, no al lado */
+  .info-row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+    padding: 18px 0;
+    align-items: start;
+  }
+  .info-row__label { margin: 0; }
+
+  /* Valor de contacto un poco más chico en mobile */
+  .info-row__value { font-size: 18px; }
+
+  /* Dos teléfonos/WhatsApp lado a lado: apilan en pantallas muy chicas */
+  .info-row > div[style*="grid-template-columns"] {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Botones de WhatsApp ocupan todo el ancho */
+  .info-row__btns { flex-direction: column; }
+  .info-row__btns .btn { width: 100%; justify-content: center; }
+}
 
 /* ─────────────── Email copy ─────────────── */
 .email-copy {
